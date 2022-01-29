@@ -8,9 +8,9 @@ public class Radio {
         return currentStation;
     }
 
-    public void setCurrentStation(int newCurrentStation) {
-        if (newCurrentStation >= 0 && newCurrentStation <= 9) {
-            currentStation = newCurrentStation;
+    public void setCurrentStation(int currentStation) {
+        if (currentStation >= 0 && currentStation <= 9) {
+            this.currentStation = currentStation;
         }
     }
 
@@ -34,9 +34,9 @@ public class Radio {
         return currentVolume;
     }
 
-    public void setCurrentVolume(int newCurrentVolume) {
-        if (newCurrentVolume >= 0 && newCurrentVolume <= 10) {
-            currentVolume = newCurrentVolume;
+    public void setCurrentVolume(int currentVolume) {
+        if (currentVolume >= 0 && currentVolume <= 10) {
+            this.currentVolume = currentVolume;
         }
     }
 

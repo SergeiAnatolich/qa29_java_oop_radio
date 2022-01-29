@@ -1,154 +1,107 @@
 package ru.netology.domain;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class RadioTest {
 
-    @Test
-    public void testSetCurrentStation() {
+    @ParameterizedTest
+    @CsvSource({
+            "out of range lower,-1,0",
+            "lower bound,0,0",
+            "general case,4,4",
+            "upper bound,9,9",
+            "out of range upper,10,0",
+    })
+    public void testSetCurrentStation(String testName, int station, int expected) {
         Radio rad = new Radio();
-        rad.setCurrentStation(6);
+        rad.setCurrentStation(station);
 
-        int expected = 6;
         int actual = rad.getCurrentStation();
 
         assertEquals(expected, actual);
     }
 
-    @Test
-    public void testSetCurrentStationMoreLimit() {
+    @ParameterizedTest
+    @CsvSource({
+            "lower bound,0,1",
+            "general case,4,5",
+            "upper bound,9,0",
+    })
+    public void testNext(String testName, int station, int expected) {
         Radio rad = new Radio();
-        rad.setCurrentStation(10);
-
-        int expected = 0;
-        int actual = rad.getCurrentStation();
-
-        assertEquals(expected, actual);
-    }
-
-    @Test
-    public void testSetCurrentStationLessLimit() {
-        Radio rad = new Radio();
-        rad.setCurrentStation(-1);
-
-        int expected = 0;
-        int actual = rad.getCurrentStation();
-
-        assertEquals(expected, actual);
-    }
-
-    @Test
-    public void testNext() {
-        Radio rad = new Radio();
+        rad.setCurrentStation(station);
         rad.Next();
 
-        int expected = 1;
         int actual = rad.getCurrentStation();
 
         assertEquals(expected, actual);
     }
 
-    @Test
-    public void testNextRound() {
+    @ParameterizedTest
+    @CsvSource({
+            "lower bound,0,9",
+            "general case,4,3",
+            "upper bound,9,8",
+    })
+    public void testPrev(String testName, int station, int expected) {
         Radio rad = new Radio();
-        rad.setCurrentStation(9);
-        rad.Next();
-
-        int expected = 0;
-        int actual = rad.getCurrentStation();
-
-        assertEquals(expected, actual);
-    }
-
-    @Test
-    public void testPrev() {
-        Radio rad = new Radio();
-        rad.setCurrentStation(7);
+        rad.setCurrentStation(station);
         rad.Prev();
 
-        int expected = 6;
         int actual = rad.getCurrentStation();
 
         assertEquals(expected, actual);
     }
 
-    @Test
-    public void testPrevRound() {
+    @ParameterizedTest
+    @CsvSource({
+            "out of range lower,-1,0",
+            "lower bound,0,0",
+            "general case,5,5",
+            "upper bound,10,10",
+            "out of range upper,11,0",
+    })
+    public void testSetCurrentVolume(String testName, int volume, int expected) {
         Radio rad = new Radio();
-        rad.Prev();
+        rad.setCurrentVolume(volume);
 
-        int expected = 9;
-        int actual = rad.getCurrentStation();
+        int actual = rad.getCurrentVolume();
 
         assertEquals(expected, actual);
     }
 
-    @Test
-    public void testIncreaseVolume() {
+    @ParameterizedTest
+    @CsvSource({
+            "lower bound,0,1",
+            "general case,5,6",
+            "upper bound,10,10",
+    })
+    public void testIncreaseVolume(String testName, int volume, int expected) {
         Radio rad = new Radio();
+        rad.setCurrentVolume(volume);
         rad.increaseVolume();
 
-        int expected = 1;
         int actual = rad.getCurrentVolume();
 
         assertEquals(expected, actual);
     }
 
-    @Test
-    public void testIncreaseVolumeMax() {
+    @ParameterizedTest
+    @CsvSource({
+            "lower bound,0,0",
+            "general case,5,4",
+            "upper bound,10,9",
+    })
+    public void testDecreaseVolume(String testName, int volume, int expected) {
         Radio rad = new Radio();
-        rad.setCurrentVolume(10);
-        rad.increaseVolume();
-
-        int expected = 10;
-        int actual = rad.getCurrentVolume();
-
-        assertEquals(expected, actual);
-    }
-
-    @Test
-    public void testDecreaseVolumeMin() {
-        Radio rad = new Radio();
+        rad.setCurrentVolume(volume);
         rad.decreaseVolume();
 
-        int expected = 0;
         int actual = rad.getCurrentVolume();
-
-        assertEquals(expected, actual);
-    }
-
-    @Test
-    public void testDecreaseVolume() {
-        Radio rad = new Radio();
-        rad.setCurrentVolume(10);
-        rad.decreaseVolume();
-
-        int expected = 9;
-        int actual = rad.getCurrentVolume();
-
-        assertEquals(expected, actual);
-    }
-
-    @Test
-    public void testSetCurrentVolumeMoreLimit() {
-        Radio rad = new Radio();
-        rad.setCurrentVolume(11);
-
-        int expected = 0;
-        int actual = rad.getCurrentStation();
-
-        assertEquals(expected, actual);
-    }
-
-    @Test
-    public void testSetCurrentVolumelessLimit() {
-        Radio rad = new Radio();
-        rad.setCurrentVolume(-1);
-
-        int expected = 0;
-        int actual = rad.getCurrentStation();
 
         assertEquals(expected, actual);
     }
