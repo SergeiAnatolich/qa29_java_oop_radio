@@ -1,6 +1,5 @@
 package ru.netology.domain;
 
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -34,7 +33,7 @@ class RadioTest {
     public void testNext(String testName, int station, int expected) {
         Radio rad = new Radio();
         rad.setCurrentStation(station);
-        rad.Next();
+        rad.next();
 
         int actual = rad.getCurrentStation();
 
@@ -50,7 +49,7 @@ class RadioTest {
     public void testPrev(String testName, int station, int expected) {
         Radio rad = new Radio();
         rad.setCurrentStation(station);
-        rad.Prev();
+        rad.prev();
 
         int actual = rad.getCurrentStation();
 
