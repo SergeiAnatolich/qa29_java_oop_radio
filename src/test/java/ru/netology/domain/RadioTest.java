@@ -1,5 +1,6 @@
 package ru.netology.domain;
 
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -145,5 +146,13 @@ class RadioTest {
         int actual = radio.getCurrentVolume();
 
         assertEquals(expected, actual);
+    }
+    @Test
+    public void testGetAmountStation() {
+        radio.setAmountStation(5);
+
+        int actual = radio.getAmountStation();
+
+        assertEquals(5, actual);
     }
 }
