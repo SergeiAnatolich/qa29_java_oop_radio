@@ -6,7 +6,8 @@ import org.junit.jupiter.params.provider.CsvSource;
 import static org.junit.jupiter.api.Assertions.*;
 
 class RadioTest {
-    Radio rad = new Radio();
+    Radio radio = new Radio();
+    Radio radioСhangeStation = new Radio(30);
 
     @ParameterizedTest
     @CsvSource({
@@ -17,9 +18,9 @@ class RadioTest {
             "out of range upper,10,0",
     })
     public void testSetCurrentStation(String testName, int station, int expected) {
-        rad.setCurrentStation(station);
+        radio.setCurrentStation(station);
 
-        int actual = rad.getCurrentStation();
+        int actual = radio.getCurrentStation();
 
         assertEquals(expected, actual);
     }
@@ -32,11 +33,10 @@ class RadioTest {
             "upper bound,29,29",
             "out of range upper,30,0",
     })
-    public void testSetCurrentStationRad1(String testName, int station, int expected) {
-        Radio rad1 = new Radio(30);
-        rad1.setCurrentStation(station);
+    public void testSetCurrentStationRadioСhangeStation(String testName, int station, int expected) {
+        radioСhangeStation.setCurrentStation(station);
 
-        int actual = rad1.getCurrentStation();
+        int actual = radioСhangeStation.getCurrentStation();
 
         assertEquals(expected, actual);
     }
@@ -48,10 +48,10 @@ class RadioTest {
             "upper bound,9,0",
     })
     public void testNext(String testName, int station, int expected) {
-        rad.setCurrentStation(station);
-        rad.next();
+        radio.setCurrentStation(station);
+        radio.next();
 
-        int actual = rad.getCurrentStation();
+        int actual = radio.getCurrentStation();
 
         assertEquals(expected, actual);
     }
@@ -62,12 +62,11 @@ class RadioTest {
             "general case,15,16",
             "upper bound,29,0",
     })
-    public void testNextRad1(String testName, int station, int expected) {
-        Radio rad1 = new Radio(30);
-        rad1.setCurrentStation(station);
-        rad1.next();
+    public void testNextRadioСhangeStation(String testName, int station, int expected) {
+        radioСhangeStation.setCurrentStation(station);
+        radioСhangeStation.next();
 
-        int actual = rad1.getCurrentStation();
+        int actual = radioСhangeStation.getCurrentStation();
 
         assertEquals(expected, actual);
     }
@@ -79,10 +78,10 @@ class RadioTest {
             "upper bound,9,8",
     })
     public void testPrev(String testName, int station, int expected) {
-        rad.setCurrentStation(station);
-        rad.prev();
+        radio.setCurrentStation(station);
+        radio.prev();
 
-        int actual = rad.getCurrentStation();
+        int actual = radio.getCurrentStation();
 
         assertEquals(expected, actual);
     }
@@ -93,12 +92,11 @@ class RadioTest {
             "general case,15,14",
             "upper bound,29,28",
     })
-    public void testPrevRad1(String testName, int station, int expected) {
-        Radio rad1 = new Radio(30);
-        rad1.setCurrentStation(station);
-        rad1.prev();
+    public void testPrevRadioСhangeStation(String testName, int station, int expected) {
+        radioСhangeStation.setCurrentStation(station);
+        radioСhangeStation.prev();
 
-        int actual = rad1.getCurrentStation();
+        int actual = radioСhangeStation.getCurrentStation();
 
         assertEquals(expected, actual);
     }
@@ -112,9 +110,9 @@ class RadioTest {
             "out of range upper,101,15",
     })
     public void testSetCurrentVolume(String testName, int volume, int expected) {
-        rad.setCurrentVolume(volume);
+        radio.setCurrentVolume(volume);
 
-        int actual = rad.getCurrentVolume();
+        int actual = radio.getCurrentVolume();
 
         assertEquals(expected, actual);
     }
@@ -126,10 +124,10 @@ class RadioTest {
             "upper bound,100,100",
     })
     public void testIncreaseVolume(String testName, int volume, int expected) {
-        rad.setCurrentVolume(volume);
-        rad.increaseVolume();
+        radio.setCurrentVolume(volume);
+        radio.increaseVolume();
 
-        int actual = rad.getCurrentVolume();
+        int actual = radio.getCurrentVolume();
 
         assertEquals(expected, actual);
     }
@@ -141,10 +139,10 @@ class RadioTest {
             "upper bound,100,99",
     })
     public void testDecreaseVolume(String testName, int volume, int expected) {
-        rad.setCurrentVolume(volume);
-        rad.decreaseVolume();
+        radio.setCurrentVolume(volume);
+        radio.decreaseVolume();
 
-        int actual = rad.getCurrentVolume();
+        int actual = radio.getCurrentVolume();
 
         assertEquals(expected, actual);
     }
