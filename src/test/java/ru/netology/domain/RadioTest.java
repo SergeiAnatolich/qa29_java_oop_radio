@@ -26,6 +26,23 @@ class RadioTest {
 
     @ParameterizedTest
     @CsvSource({
+            "out of range lower,-1,0",
+            "lower bound,0,0",
+            "general case,15,15",
+            "upper bound,29,29",
+            "out of range upper,30,0",
+    })
+    public void testSetCurrentStationRad1(String testName, int station, int expected) {
+        Radio rad1 = new Radio(30);
+        rad1.setCurrentStation(station);
+
+        int actual = rad1.getCurrentStation();
+
+        assertEquals(expected, actual);
+    }
+
+    @ParameterizedTest
+    @CsvSource({
             "lower bound,0,1",
             "general case,4,5",
             "upper bound,9,0",
@@ -41,6 +58,22 @@ class RadioTest {
 
     @ParameterizedTest
     @CsvSource({
+            "lower bound,0,1",
+            "general case,15,16",
+            "upper bound,29,0",
+    })
+    public void testNextRad1(String testName, int station, int expected) {
+        Radio rad1 = new Radio(30);
+        rad1.setCurrentStation(station);
+        rad1.next();
+
+        int actual = rad1.getCurrentStation();
+
+        assertEquals(expected, actual);
+    }
+
+    @ParameterizedTest
+    @CsvSource({
             "lower bound,0,9",
             "general case,4,3",
             "upper bound,9,8",
@@ -50,6 +83,22 @@ class RadioTest {
         rad.prev();
 
         int actual = rad.getCurrentStation();
+
+        assertEquals(expected, actual);
+    }
+
+    @ParameterizedTest
+    @CsvSource({
+            "lower bound,0,29",
+            "general case,15,14",
+            "upper bound,29,28",
+    })
+    public void testPrevRad1(String testName, int station, int expected) {
+        Radio rad1 = new Radio(30);
+        rad1.setCurrentStation(station);
+        rad1.prev();
+
+        int actual = rad1.getCurrentStation();
 
         assertEquals(expected, actual);
     }

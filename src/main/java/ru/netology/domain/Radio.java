@@ -5,6 +5,12 @@ public class Radio {
     private int currentStation;
     private int currentVolume = 15;
 
+    public Radio() {
+    }
+
+    public Radio(int amountStation) {
+        this.amountStation = amountStation;
+    }
 
     public int getCurrentStation() {
         return currentStation;
