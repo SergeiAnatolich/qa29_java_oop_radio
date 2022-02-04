@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class RadioTest {
     Radio radio = new Radio();
-    Radio radioСhangeStation = new Radio(30);
+    Radio radioChangeStation = new Radio(30);
 
     @ParameterizedTest
     @CsvSource({
@@ -33,10 +33,10 @@ class RadioTest {
             "upper bound,29,29",
             "out of range upper,30,0",
     })
-    public void testSetCurrentStationRadioСhangeStation(String testName, int station, int expected) {
-        radioСhangeStation.setCurrentStation(station);
+    public void testSetCurrentStationRadioChangeStation(String testName, int station, int expected) {
+        radioChangeStation.setCurrentStation(station);
 
-        int actual = radioСhangeStation.getCurrentStation();
+        int actual = radioChangeStation.getCurrentStation();
 
         assertEquals(expected, actual);
     }
@@ -62,11 +62,11 @@ class RadioTest {
             "general case,15,16",
             "upper bound,29,0",
     })
-    public void testNextRadioСhangeStation(String testName, int station, int expected) {
-        radioСhangeStation.setCurrentStation(station);
-        radioСhangeStation.next();
+    public void testNextRadioChangeStation(String testName, int station, int expected) {
+        radioChangeStation.setCurrentStation(station);
+        radioChangeStation.next();
 
-        int actual = radioСhangeStation.getCurrentStation();
+        int actual = radioChangeStation.getCurrentStation();
 
         assertEquals(expected, actual);
     }
@@ -92,11 +92,11 @@ class RadioTest {
             "general case,15,14",
             "upper bound,29,28",
     })
-    public void testPrevRadioСhangeStation(String testName, int station, int expected) {
-        radioСhangeStation.setCurrentStation(station);
-        radioСhangeStation.prev();
+    public void testPrevRadioChangeStation(String testName, int station, int expected) {
+        radioChangeStation.setCurrentStation(station);
+        radioChangeStation.prev();
 
-        int actual = radioСhangeStation.getCurrentStation();
+        int actual = radioChangeStation.getCurrentStation();
 
         assertEquals(expected, actual);
     }
