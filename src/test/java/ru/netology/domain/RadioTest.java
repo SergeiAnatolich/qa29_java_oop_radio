@@ -149,15 +149,6 @@ class RadioTest {
     }
 
     @Test
-    public void testGetAmountStation() {
-        radio.setAmountStation(5);
-
-        int actual = radio.getAmountStation();
-
-        assertEquals(5, actual);
-    }
-
-    @Test
     public void shouldSetRadioChangeAll() {
         Radio radioChangeAll = new Radio(30, 0, 20);
 
@@ -169,40 +160,5 @@ class RadioTest {
 
         int actualCV = radioChangeAll.getCurrentVolume();
         assertEquals(20, actualCV);
-    }
-
-    @Test
-    public void testHashCode() {
-        assertEquals(240204, radio.hashCode());
-    }
-
-    @Test
-    public void testHashCodeChangeStation() {
-        assertEquals(309824, radioChangeStation.hashCode());
-    }
-
-    @Test
-    public void testToString() {
-        assertEquals("Radio(amountStation=10, currentStation=0, currentVolume=15)", radio.toString());
-    }
-
-    @Test
-    public void testToStringChangeStation() {
-        assertEquals("Radio(amountStation=30, currentStation=0, currentVolume=15)", radioChangeStation.toString());
-    }
-
-    @Test
-    public void testCanEqual() {
-        assertTrue(radio.canEqual(radio));
-    }
-
-    @Test
-    public void testEqual() {
-        Radio radioChange1 = new Radio(10, 0, 15);
-        Radio radioChange2 = new Radio(3, 2, 1);
-
-        assertTrue(radio.equals(radioChange1));
-        assertFalse(radio.equals(radioChange2));
-        assertFalse(radio.equals(null));
     }
 }
